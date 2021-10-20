@@ -20,13 +20,13 @@ jobs:
       run: | 
       python lint_test.py 
     - name: build-container
-     run: echo " builing container image ..."
-     sleep 10 
-     - name: deploy-cluster
-       run: echo "deploying"
-       slepp 20 
-       echo "container deployed" 
-     - run echo "This job status is ${{job.status}}"
+      run: echo " builing container image ..."
+         sleep 10 
+    - name: deploy-cluster
+      run: echo "deploying"
+      sleep 20 
+      echo "container deployed" 
+    - run echo "This job status is ${{job.status}}"
       
     
     
