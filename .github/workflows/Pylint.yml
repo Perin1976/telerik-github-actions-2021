@@ -24,8 +24,6 @@ jobs:
          sleep 10 
     - name: deploy-cluster
       run: echo "deploying"
-
-    - run echo "This job status is ${{job.status}}"
       
 
     
