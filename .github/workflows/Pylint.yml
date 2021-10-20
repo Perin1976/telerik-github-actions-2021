@@ -12,21 +12,21 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9 
-    - name:  install-dependencies
-      run: | 
-      python –m pip install –- upgrade pip
-      pip install pylint
-    - name: lint-with-pylint
-      run: | 
-      python lint_test.py 
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Lint with pylint
+      run: |
+        python lint_test.py
     - name: build-container
       run: echo " builing container image ..."
          sleep 10 
     - name: deploy-cluster
       run: echo "deploying"
-      sleep 20 
-      echo "container deployed" 
+
     - run echo "This job status is ${{job.status}}"
       
+
     
     
