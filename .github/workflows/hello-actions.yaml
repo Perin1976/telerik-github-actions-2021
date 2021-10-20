@@ -1,5 +1,5 @@
 name: learn-github-actions
-0n: [push]
+on: [push]
 jobs:
 hello-actions:
 runs-on:ubuntu-latest
