@@ -2,7 +2,7 @@ name: pylint_pull
 on: 
   pull_request:
       paths:
-      - '/**.py'
+      - lint_test.py
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
