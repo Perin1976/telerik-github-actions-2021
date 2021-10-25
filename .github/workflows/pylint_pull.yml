@@ -30,5 +30,28 @@ jobs:
       ##as per https://github.community/t/steps-in-parallel/16343
 ##Not at this moment. Only jobs can run in parallel, but steps always run sequentially.
 ##I don’t know if there are any plans to ever support this.
+  py-lint2:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "this has been triggered by a ${{ github.event_name }} event."
+    - run: echo "this has been triggered by a ${{ runner.os }} server hosted on gitgub."
+    - name: check out repository code 
+      uses: actions/checkout@v2
+    - name: set-up-Python-3.9 
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9 
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Lint with pylint
+      run: |
+        python lint_test.py
+    - name: build-container
+      run: echo " builing container image ..."
+         sleep 5
+    - name: deploy-cluster
+      run: echo "deploying"
       
       
