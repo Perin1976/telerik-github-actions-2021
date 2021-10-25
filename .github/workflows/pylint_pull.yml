@@ -1,5 +1,8 @@
 name: pylint_pull
-on: pull_request
+on: 
+  pull_request:
+      paths:
+      - '/**.py'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
