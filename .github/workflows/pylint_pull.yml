@@ -27,4 +27,8 @@ jobs:
          sleep 10 
     - name: deploy-cluster
       run: echo "deploying"
+      ##as per https://github.community/t/steps-in-parallel/16343
+##Not at this moment. Only jobs can run in parallel, but steps always run sequentially.
+##I don’t know if there are any plans to ever support this.
+      
       
