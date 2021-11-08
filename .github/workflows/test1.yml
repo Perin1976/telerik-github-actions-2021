@@ -65,3 +65,33 @@ jobs:
       run: |
         python --version
         pycodestyle *.py
+  build:
+    needs: [style,lint]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Build container
+      run: echo "Building container iamge"
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: factorial.py
+        path: factorial.py
+  unit-test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Unit testing
+      run: |
+        python3 -m doctest factorial.py
