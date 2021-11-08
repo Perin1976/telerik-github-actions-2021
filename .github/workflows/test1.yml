@@ -43,7 +43,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest]
         python-version: ['2.7', '3.8', '3.9']
         #python-version: ['3.9']        
         #exclude:
@@ -97,12 +97,26 @@ jobs:
     - name: Unit testing
       run: |
         python3 -m doctest factorial.py
+  Sonar:
+    needs: unit-test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
   deploy:
     needs: unit-test
     runs-on: ubuntu-latest
     steps:
     - name: Deploy
       run: echo "Deploying to cluster"
+      
       
       
         
