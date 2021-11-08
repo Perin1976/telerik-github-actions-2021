@@ -77,6 +77,8 @@ jobs:
         python-version: 3.9
     - name: Build container
       run: echo "Building container iamge"
+    - name: Directory listing 
+      run: ls - lah | pwd 
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
