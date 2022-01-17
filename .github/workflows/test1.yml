@@ -21,23 +21,7 @@ jobs:
         echo "$WORKSPACE_ENVIRONMENT_VARIABLE"
         echo "$JOB_ENVIRONMENT_VARIABLE"
         echo "$STEP_ENVIRONMENT_VARIABLE"
-  lint:
-    needs: pre-build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check out repository code
-      uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-    - name: Lint with pylint
-      run: |
-        python lint_test.py 
+  
         
   style:
     needs: pre-build
@@ -67,7 +51,7 @@ jobs:
         python --version
         pycodestyle *.py
   build:
-    needs: [style,lint]
+    needs: [style]
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
