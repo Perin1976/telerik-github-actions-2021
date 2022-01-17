@@ -63,7 +63,7 @@ jobs:
         python --version
         pycodestyle *.py
   build:
-    needs: [ lint, style ]
+    needs: [ style ]
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
