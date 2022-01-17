@@ -3,6 +3,7 @@ env:
   WORKSPACE_ENVIRONMENT_VARIABLE: 'CustEnvVar'
 on: [push]
 jobs:
+
   pre-build:
     env:
       JOB_ENVIRONMENT_VARIABLE: 'CustEnvVarUbuntu'
