@@ -1,7 +1,11 @@
 name: Telerik-Github-Actions-Practice-main
 env:
   WORKSPACE_ENVIRONMENT_VARIABLE: 'custom workspace environment variable'
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
+
 jobs:
   pre-build:
     env:
