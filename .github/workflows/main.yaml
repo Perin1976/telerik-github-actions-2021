@@ -153,4 +153,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: todordimivanov/dockerhubdemo:art-${{ steps.date.outputs.date }}
+          tags: ${{ secrets.DOCKERUSER }}/dockerhubdemo:latest-${{ steps.date.outputs.date }}
