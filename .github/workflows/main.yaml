@@ -124,8 +124,20 @@ jobs:
         env:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432
-  deploy:
-    needs: [ SAST, database-integration ]
-    runs-on: ubuntu-latest
-    steps:
-     - run: echo "Deploy to production"
+  push-to-dockerHub:
+      needs: [ SAST, database-integration ]
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+
+      - name: Docker Login
+      env:
+        DOCKERUSER: ${{secrets.DOCKERUSER}}
+        DOCKERHUBTOKEN: ${{secrets.DOCKERHUBTOKEN}}
+        run: | 
+          docker login -u $DOCKERUSER -p $DOCKERHUBTOKEN 
+          - name: Build the Docker image
+           run: docker build . --file Dockerfile --tag todordimivanov/dockerhubdemo:$(date +%s)
+           - name: Docker Push 
+           run: docker push ${{secrets.DOCKERUSER}}/dockerhubdemo 
+   
