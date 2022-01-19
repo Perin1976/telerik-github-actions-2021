@@ -145,4 +145,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tag: todordimivanov/dockerhubdemo:$(date +%s)
+          tags: todordimivanov/dockerhubdemo:$(date +%s)
