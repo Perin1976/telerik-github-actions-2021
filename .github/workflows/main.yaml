@@ -130,7 +130,7 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d-%HH-%MM-$SS')"
       - name: set tag_name
-        run: echo $TAG_NAME - $RELEASE_NAME
+        run: echo $TAG_NAME
         env:
           TAG_NAME: todordimivanov/dockerhubdemo:${{ steps.date.outputs.date }}
           
@@ -153,4 +153,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: $TAG_NAME
+          tags: todordimivanov/dockerhubdemo:${{ steps.date.outputs.date }}
