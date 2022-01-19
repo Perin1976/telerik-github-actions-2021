@@ -128,11 +128,11 @@ jobs:
     steps:
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%HH-%MM-$SS')"
+        run: echo "::set-output name=date::$(date +'%F-%T')"
       - name: set tag_name
         run: echo $TAG_NAME
         env:
-          TAG_NAME: todordimivanov/dockerhubdemo:${{ steps.date.outputs.date }}
+          TAG_NAME: art-${{ steps.date.outputs.date }}
           
       - name: Checkout
         uses: actions/checkout@v2
@@ -153,4 +153,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: todordimivanov/dockerhubdemo:${{ steps.date.outputs.date }}
+          tags: todordimivanov/dockerhubdemo:art-${{ steps.date.outputs.date }}
