@@ -136,8 +136,8 @@ jobs:
         DOCKERHUBTOKEN: ${{secrets.DOCKERHUBTOKEN}}
         run: | 
           docker login -u $DOCKERUSER -p $DOCKERHUBTOKEN 
-          - name: Build the Docker image
-           run: docker build . --file Dockerfile --tag todordimivanov/dockerhubdemo:$(date +%s)
-           - name: Docker Push 
-           run: docker push ${{secrets.DOCKERUSER}}/dockerhubdemo 
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag todordimivanov/dockerhubdemo:$(date +%s)
+      - name: Docker Push 
+        run: docker push ${{secrets.DOCKERUSER}}/dockerhubdemo 
    
