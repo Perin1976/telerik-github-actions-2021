@@ -123,6 +123,7 @@ jobs:
           POSTGRES_PORT: 5432
   
   push-to-dockerHub:
+    needs: [ SAST, database-integration ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
