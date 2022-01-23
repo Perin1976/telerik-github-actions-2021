@@ -37,7 +37,7 @@ jobs:
           commit_message: "build(detect-secrets): Commit the newly-generated .secrets.baseline file"
   
   lint:
-    needs: pre-build
+    needs: Check-for-secrets
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -51,7 +51,7 @@ jobs:
           fail: false # Fail the action if pylint errors are found
           
   style:
-    needs: pre-build
+    needs: Check-for-secrets
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -78,7 +78,7 @@ jobs:
         python --version
         pycodestyle *.py
   build:
-    needs: [ style ]
+    needs: [ style , lint ]
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
