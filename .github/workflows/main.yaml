@@ -24,6 +24,7 @@ jobs:
         echo "$STEP_ENVIRONMENT_VARIABLE"
   
   Check-for-secrets:
+    needs: pre-build
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout
