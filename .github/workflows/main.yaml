@@ -145,7 +145,7 @@ jobs:
            npm install pg
         
       - name: Connect to PostgreSQL
-        run: node client.js 
+        run: perl --version
         env:
           POSTGRES_HOST:  ${{ secrets.POSTGRES_HOST }}
           POSTGRES_PORT: 5432
