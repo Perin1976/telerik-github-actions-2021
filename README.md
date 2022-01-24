@@ -10,5 +10,5 @@ Credits to Tom Reid for the Python Code.
 5) build : using github actions produce an python artefact ; depends on both jobs lint & style success; if any is failed pipeline is terminated ; 
 6) unit-test : runs python  doctest against produced python  factorial.py file ; depends on job build success ; 
 7) SAST: uses connetion to SonarCloud to have a SonarCloud Scan of the repository ; depends on job unit-test  success ; 
-8) database-integration :  installs a service postgress container ;  depends on unit-test;  
-9)push-to-dockerHub: build Docker image and push to DockerHub repository ; depends on SADT and database-integration jobs success; 
+8) database-integration :  installs a service postgress container ;  depends on unit-test;
+9) push-to-dockerHub: build Docker image and push to DockerHub repository ; depends on SADT and database-integration jobs success; 
